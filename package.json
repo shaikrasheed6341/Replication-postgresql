@@ -1,0 +1,38 @@
+{
+  "name": "dbms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "module": "true",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "db:shard1:generate": "npx drizzle-kit generate --config=drizzle.config.shard1.js ",
+    "db:shard1:migrate": "npx drizzle-kit migrate --config=drizzle.config.shard1.js ",
+    "db:shard1:push": "npx drizzle-kit push --config=drizzle.config.shard1.js",
+    "db:shard2:generate": "npx drizzle-kit generate --config=drizzle.config.shard2.js ",
+    "db:shard2:migrate": "npx drizzle-kit migrate --config=drizzle.config.shard2.js ",
+    "db:shard2:push": "npx drizzle-kit push --config=drizzle.config.shard2.js",
+    "redis": "node redisconnecation.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "cookies": "^0.9.1",
+    "dotenv": "^17.4.2",
+    "drizzle-orm": "^0.45.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "nodemon": "^3.1.14",
+    "pg": "^8.23.0",
+    "redis": "^6.2.1"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.21.0",
+    "drizzle-kit": "^0.31.10"
+  }
+}

@@ -1,0 +1,50 @@
+services:
+  shard1:
+    image: postgres:latest
+    container_name: shard1
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_USER: shaik
+      POSTGRES_PASSWORD: shaik
+      POSTGRES_DB: mydb
+    networks:
+      - shard-network
+  replica1:
+    image: postgres:latest
+    container_name: replica1
+    ports:
+      - "5437:5432"
+    environment:
+      POSTGRES_USER: shaik
+      POSTGRES_PASSWORD: shaik
+    networks:
+      - shard-network
+  shard2:
+    image: postgres:latest
+    container_name: shard2
+    ports:
+      - "5436:5432"
+    environment:
+      POSTGRES_PASSWORD: shaik
+    networks:
+      - shard-network
+  replica2:
+    image: postgres:latest
+    container_name: replica2
+    ports:
+      - "5438:5432"
+    environment:
+      POSTGRES_PASSWORD: shaik
+    networks:
+      - shard-network   
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - shard-network
+networks:
+  shard-network:
+    driver: bridge
